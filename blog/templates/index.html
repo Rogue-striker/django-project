@@ -24,11 +24,6 @@
         .list-items{
             list-style: none;
         }
-        .todolist{
-            padding: 10px;
-           
-            display: flexbox;
-        }
         .create-form{
             padding:10px;
             margin : 20px;
@@ -64,11 +59,13 @@
             <ul class = "list-items">
                 {% for i in allitemslist %}
                 <li>{{ i.content }}</li>
-                <form action="/deleteitem/{{i.id }} " method = "POST">
+                <form action="/deleteitem/{{i.id }}/" method = "POST"> {% csrf_token %}
                 <input  style ="display: inline;" id = 'buttons' type = 'submit' value = 'delete'></form>
                 <hr>
                 {%endfor%}
             </ul>
-        </div></div>
+        </div>
+       
+    </div>
 </body>
 </html>

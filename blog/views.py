@@ -7,9 +7,11 @@ def indexpage(request):
     ,{'allitemslist':all_items})
 def additem(request):
     context = request.POST['content']
+    if(len(context)==0):
+        return 
     todolist(content = context).save()
     return HttpResponseRedirect('/views/')
 def deleteitem(request,todo_id):
-    item_to_be_deleted = todolist.objects.get(todo_id)
+    item_to_be_deleted = todolist.objects.get(id=todo_id)
     item_to_be_deleted.delete()
     return HttpResponseRedirect('/views/')
