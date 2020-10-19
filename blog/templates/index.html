@@ -50,7 +50,7 @@
     </div>
     <div class ="create-form">
             <form  action="/additem/" method ='POST'> {% csrf_token %}
-            <input type = "text"  name = 'content'>
+            <input type = "text"  name = 'content' required>
             <input  id = 'buttons' type = "submit" value = "add">
             </form>
     </div>
