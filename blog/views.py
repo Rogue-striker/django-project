@@ -8,7 +8,7 @@ def indexpage(request):
 def additem(request):
     context = request.POST['content']
     if(len(context)==0):
-        return 
+        return HttpResponseRedirect('/views/')
     todolist(content = context).save()
     return HttpResponseRedirect('/views/')
 def deleteitem(request,todo_id):
