@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="blog/templates/favicon.ico" type='image/x-icon'>
+    <style>
+        .header{
+            color: brown;
+            border: 10px;
+        }
+        #buttons{
+            display: inline;
+        }
+        .full-body{
+
+            background-color:aqua;
+        }
+        .nav{
+            display: inline;
+             margin-right: 10px;
+        }
+        .list-items{
+            list-style: none;
+        }
+        .todolist{
+            padding: 10px;
+           
+            display: flexbox;
+        }
+        .create-form{
+            padding:10px;
+            margin : 20px;
+        }
+        #buttons{
+            background-color: tomato;
+            border : none; 
+
+        }
+        #buttons:hover{
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class = "full-body">
+        <div class = 'nav'><a href = "#">Home</a></div>
+        <div class = 'nav'><a href = "#">Profile</a></div>
+        <div class = 'nav'><a href = "#">Settings</a></div>     
+    </div>
+    <div class ="header">
+        <h1>To Do List</h1>
+    </div>
+    <div class ="create-form">
+            <form  action="/additem/" method ='POST'> {% csrf_token %}
+            <input type = "text"  name = 'content'>
+            <input  id = 'buttons' type = "submit" value = "add">
+            </form>
+    </div>
+    <div class = "todolist"> 
+        <div class = "todolist-items">
+            <ul class = "list-items">
+                {% for i in allitemslist %}
+                <li>{{ i.content }}</li>
+                <form action="/deleteitem/{{i.id }} " method = "POST">
+                <input  style ="display: inline;" id = 'buttons' type = 'submit' value = 'delete'></form>
+                <hr>
+                {%endfor%}
+            </ul>
+        </div></div>
+</body>
+</html>
