@@ -7,5 +7,5 @@ urlpatterns = [
     path('views/',views.indexpage ,name = 'index'),
     path('additem/',views.additem ,name = "adding_list"),
     path('deleteitem/<int:todo_id>/',views.deleteitem,name="deleteitem"),
-   
+    path('refresh/',views.refresh,name="refresh"),
 ]

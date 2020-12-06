@@ -4,8 +4,7 @@ from .models import todolist
 
 def indexpage(request):
     all_items = todolist.objects.all()
-    return render(request,'index.html' 
-    ,{'allitemslist':all_items})
+    return render(request,'index.html' ,{'allitemslist':all_items})
 def additem(request):
     context = request.POST['content']
     todolist(content = context).save()
@@ -14,3 +13,6 @@ def deleteitem(request,todo_id):
     item_to_be_deleted = todolist.objects.get(id=todo_id)
     item_to_be_deleted.delete()
     return HttpResponseRedirect('/views/')
+def refresh(request):
+    all_items = todolist.objects.all()
+    return render(request,'index.html',{'allitemslist':all_items})
